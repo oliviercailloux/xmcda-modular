@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	targetNamespace="http://xmcda-modular.github.io/2016/xsd" xmlns:xm="http://xmcda-modular.github.io/2016/xsd"
-	elementFormDefault="unqualified">
+	xmlns:h="http://www.w3.org/1999/xhtml" elementFormDefault="unqualified">
 	<xs:annotation>
-		<xs:documentation>In each set, if ordering is required, it is assumed
-			to be ascending (first element = least preferred).
+		<xs:documentation>
+			<h:p>This is a DRAFT schema. It is currently unstable.</h:p>
+			<h:p>Taken from
+				https://github.com/tommite/pubs-code/tree/master/mcdadm-aor. Changed
+				namespace, which was unfortunately incorrect.
+			</h:p>
+			<h:p>In each set, if ordering is required, it is assumed
+				to be
+				ascending (first element = least preferred).
+			</h:p>
 		</xs:documentation>
 	</xs:annotation>
 

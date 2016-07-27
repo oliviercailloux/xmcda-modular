@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmcda-modular.github.io/2016/examples/AttrAndCrit" xmlns:xm="http://xmcda-modular.github.io/2016/xsd"
+	xmlns:xac="http://xmcda-modular.github.io/2016/examples/AttrAndCrit" elementFormDefault="unqualified">
+
+	<xs:import namespace="http://xmcda-modular.github.io/2016/xsd"
+		schemaLocation="https://raw.githubusercontent.com/oliviercailloux/xmcda-modular/master/xmcda-modular.xsd"></xs:import>
+
+	<xs:element name="AttrAndCrit">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="attribute" type="xm:attributeType" />
+				<xs:element name="criterion" type="xm:criterionType" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

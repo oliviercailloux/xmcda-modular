@@ -6,7 +6,7 @@
 	<attribute>
 		<id>attr1</id>
 	</attribute>
-	<criterion xsi:type="xm:directUtilityCriterionType">
+	<criterion xsi:type="xm:directUtilityCriterion">
 		<id>c1</id>
 		<attribute ref="attr1" />
 		<value>

@@ -17,16 +17,16 @@
 	</xs:annotation>
 
 	<!-- Function -->
-	<xs:complexType name="functionType" abstract="true" />
+	<xs:complexType name="function" abstract="true" />
 
 	<!-- ExponentialFunction -->
-	<xs:complexType name="exponentialFunctionType">
+	<xs:complexType name="exponentialFunction">
 		<xs:annotation>
 			<xs:documentation>A function of the form u(x) = 1 − e^{-ax}
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="xm:functionType">
+			<xs:extension base="xm:function">
 				<xs:sequence>
 					<xs:element name="exponent" type="xs:double" />
 				</xs:sequence>
@@ -35,7 +35,7 @@
 	</xs:complexType>
 
 	<!-- Point2D -->
-	<xs:complexType name="point2DType">
+	<xs:complexType name="point2D">
 		<xs:sequence>
 			<xs:element name="x" type="xs:double" />
 			<xs:element name="y" type="xs:double" />
@@ -43,11 +43,11 @@
 	</xs:complexType>
 
 	<!-- PiecewiseLinearFunction -->
-	<xs:complexType name="piecewiseLinearFunctionType">
+	<xs:complexType name="piecewiseLinearFunction">
 		<xs:complexContent>
-			<xs:extension base="xm:functionType">
+			<xs:extension base="xm:function">
 				<xs:sequence>
-					<xs:element name="point" type="xm:point2DType"
+					<xs:element name="point" type="xm:point2D"
 						minOccurs="2" maxOccurs="unbounded" />
 				</xs:sequence>
 			</xs:extension>
@@ -55,9 +55,9 @@
 	</xs:complexType>
 
 	<!-- AffineLinear -->
-	<xs:complexType name="affineLinearFunctionType">
+	<xs:complexType name="affineLinearFunction">
 		<xs:complexContent>
-			<xs:extension base="xm:functionType">
+			<xs:extension base="xm:function">
 				<xs:sequence>
 					<xs:element name="a" type="xs:double" minOccurs="1"
 						maxOccurs="1" />
@@ -69,7 +69,7 @@
 	</xs:complexType>
 
 	<!-- KeyedEntity -->
-	<xs:complexType name="keyedEntityType" abstract="true">
+	<xs:complexType name="keyedEntity" abstract="true">
 		<xs:sequence>
 			<xs:element name="id" type="xs:string" minOccurs="1"
 				maxOccurs="1"></xs:element>
@@ -89,9 +89,9 @@
 	</xs:complexType>
 
 	<!-- Alternative -->
-	<xs:complexType name="alternativeType" abstract="false">
+	<xs:complexType name="alternative" abstract="false">
 		<xs:complexContent>
-			<xs:extension base="xm:keyedEntityType" />
+			<xs:extension base="xm:keyedEntity" />
 		</xs:complexContent>
 	</xs:complexType>
 
@@ -103,17 +103,17 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="alternativeSetType">
+	<xs:complexType name="alternativeSet">
 		<xs:sequence>
-			<xs:element name="alternative" type="xm:alternativeType"
+			<xs:element name="alternative" type="xm:alternative"
 				minOccurs="0" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
 	<!-- Category -->
-	<xs:complexType name="categoryType">
+	<xs:complexType name="category">
 		<xs:complexContent>
-			<xs:extension base="xm:keyedEntityType" />
+			<xs:extension base="xm:keyedEntity" />
 		</xs:complexContent>
 	</xs:complexType>
 
@@ -125,18 +125,18 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="categorySetType">
+	<xs:complexType name="categorySet">
 		<xs:sequence>
-			<xs:element name="category" type="xm:categoryType"
+			<xs:element name="category" type="xm:category"
 				minOccurs="0" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
 
 	<!-- Attribute -->
-	<xs:complexType name="attributeType" abstract="false">
+	<xs:complexType name="attribute" abstract="false">
 		<xs:complexContent>
-			<xs:extension base="xm:keyedEntityType">
+			<xs:extension base="xm:keyedEntity">
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -149,14 +149,14 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="attributeSetType">
+	<xs:complexType name="attributeSet">
 		<xs:sequence>
-			<xs:element name="attribute" type="xm:attributeType"
+			<xs:element name="attribute" type="xm:attribute"
 				minOccurs="0" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="nominalToCardinalType">
+	<xs:complexType name="nominalToCardinal">
 		<xs:sequence>
 			<xs:element name="nominalFrom" type="xm:attributeReference" />
 			<xs:element name="cardinalTo" type="xm:attributeReference" />
@@ -167,20 +167,20 @@
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="nominalToCardinalSetType">
+	<xs:complexType name="nominalToCardinalSet">
 		<xs:sequence>
-			<xs:element name="nominalToCardinal" type="xm:nominalToCardinalType"
+			<xs:element name="nominalToCardinal" type="xm:nominalToCardinal"
 				minOccurs="0" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
 	<!-- Measurement -->
-	<xs:complexType name="measurementType" abstract="true" />
+	<xs:complexType name="measurement" abstract="true" />
 
 	<!-- ExactMeasurement -->
-	<xs:complexType name="exactMeasurementType">
+	<xs:complexType name="exactMeasurement">
 		<xs:complexContent>
-			<xs:extension base="xm:measurementType">
+			<xs:extension base="xm:measurement">
 				<xs:sequence>
 					<xs:element name="value" type="xs:double" />
 				</xs:sequence>
@@ -189,9 +189,9 @@
 	</xs:complexType>
 
 	<!-- BinaryMeasurement -->
-	<xs:complexType name="binaryMeasurementType">
+	<xs:complexType name="binaryMeasurement">
 		<xs:complexContent>
-			<xs:extension base="xm:measurementType">
+			<xs:extension base="xm:measurement">
 				<xs:sequence>
 					<xs:element name="value" type="xs:boolean" />
 				</xs:sequence>
@@ -200,9 +200,9 @@
 	</xs:complexType>
 
 	<!-- Interval -->
-	<xs:complexType name="intervalType">
+	<xs:complexType name="interval">
 		<xs:complexContent>
-			<xs:extension base="xm:measurementType">
+			<xs:extension base="xm:measurement">
 				<xs:sequence>
 					<xs:element name="begin" type="xs:double" />
 					<xs:element name="end" type="xs:double" />
@@ -212,9 +212,9 @@
 	</xs:complexType>
 
 	<!-- Gaussian -->
-	<xs:complexType name="gaussianType">
+	<xs:complexType name="gaussian">
 		<xs:complexContent>
-			<xs:extension base="xm:measurementType">
+			<xs:extension base="xm:measurement">
 				<xs:sequence>
 					<xs:element name="mu" type="xs:double" />
 					<xs:element name="sigma" type="xs:double" />
@@ -224,22 +224,22 @@
 	</xs:complexType>
 
 	<!-- ExactNominalMeasurement -->
-	<xs:complexType name="nominalMeasurementType">
+	<xs:complexType name="nominalMeasurement">
 		<xs:complexContent>
-			<xs:extension base="xm:measurementType">
+			<xs:extension base="xm:measurement">
 				<xs:sequence>
-					<xs:element name="value" type="xm:categoryType" />
+					<xs:element name="value" type="xm:category" />
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 
 	<!-- ImpreciseNominalMeasurement -->
-	<xs:complexType name="impreciseNominalMeasurementType">
+	<xs:complexType name="impreciseNominalMeasurement">
 		<xs:complexContent>
-			<xs:extension base="xm:measurementType">
+			<xs:extension base="xm:measurement">
 				<xs:sequence minOccurs="1" maxOccurs="unbounded">
-					<xs:element name="category" type="xm:categoryType" />
+					<xs:element name="category" type="xm:category" />
 					<xs:element name="probability" type="xs:double" />
 				</xs:sequence>
 			</xs:extension>
@@ -247,9 +247,9 @@
 	</xs:complexType>
 
 	<!-- Criterion -->
-	<xs:complexType name="criterionType" abstract="true">
+	<xs:complexType name="criterion" abstract="true">
 		<xs:complexContent>
-			<xs:extension base="xm:keyedEntityType">
+			<xs:extension base="xm:keyedEntity">
 				<xs:sequence>
 					<xs:element name="attribute" type="xm:attributeReference"></xs:element>
 				</xs:sequence>
@@ -265,18 +265,18 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="criterionSetType">
+	<xs:complexType name="criterionSet">
 		<xs:sequence>
-			<xs:element name="criterion" type="xm:criterionType"
+			<xs:element name="criterion" type="xm:criterion"
 				minOccurs="0" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
 
 	<!-- DirectUtilityCriterion -->
-	<xs:complexType name="directUtilityCriterionType">
+	<xs:complexType name="directUtilityCriterion">
 		<xs:complexContent>
-			<xs:extension base="xm:criterionType">
+			<xs:extension base="xm:criterion">
 				<xs:sequence>
 					<xs:element name="value" minOccurs="1" maxOccurs="unbounded">
 						<xs:complexType>
@@ -297,17 +297,17 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="directUtilityCriterionSetType">
+	<xs:complexType name="directUtilityCriterionSet">
 		<xs:sequence>
-			<xs:element name="criterion" type="xm:directUtilityCriterionType"
+			<xs:element name="criterion" type="xm:directUtilityCriterion"
 				minOccurs="0" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
 	<!-- NominalUtilityCriterion -->
-	<xs:complexType name="nominalUtilityCriterionType">
+	<xs:complexType name="nominalUtilityCriterion">
 		<xs:complexContent>
-			<xs:extension base="xm:criterionType">
+			<xs:extension base="xm:criterion">
 				<xs:sequence>
 					<xs:sequence minOccurs="1" maxOccurs="unbounded">
 						<xs:element name="category" type="xm:categoryReference" />
@@ -318,35 +318,35 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="nominalUtilityCriterionSetType">
+	<xs:complexType name="nominalUtilityCriterionSet">
 		<xs:sequence>
-			<xs:element name="criterion" type="xm:nominalUtilityCriterionType"
+			<xs:element name="criterion" type="xm:nominalUtilityCriterion"
 				minOccurs="0" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
 	<!-- CardinalUtilityCriterion -->
-	<xs:complexType name="cardinalUtilityCriterionType">
+	<xs:complexType name="cardinalUtilityCriterion">
 		<xs:complexContent>
-			<xs:extension base="xm:criterionType">
+			<xs:extension base="xm:criterion">
 				<xs:sequence>
-					<xs:element name="utilityFunction" type="xm:functionType" />
+					<xs:element name="utilityFunction" type="xm:function" />
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="cardinalUtilityCriterionSetType">
+	<xs:complexType name="cardinalUtilityCriterionSet">
 		<xs:sequence>
-			<xs:element name="criterion" type="xm:cardinalUtilityCriterionType"
+			<xs:element name="criterion" type="xm:cardinalUtilityCriterion"
 				minOccurs="0" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
 	<!-- DirectedCriterion -->
-	<xs:complexType name="directedCriterionType">
+	<xs:complexType name="directedCriterion">
 		<xs:complexContent>
-			<xs:extension base="xm:criterionType">
+			<xs:extension base="xm:criterion">
 				<xs:sequence>
 					<xs:element name="preferenceDirection" minOccurs="1"
 						maxOccurs="1">
@@ -362,91 +362,91 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="directedCriterionSetType">
+	<xs:complexType name="directedCriterionSet">
 		<xs:sequence>
-			<xs:element name="criterion" type="xm:directedCriterionType"
+			<xs:element name="criterion" type="xm:directedCriterion"
 				minOccurs="0" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
 	<!-- OutrankingCriterion -->
-	<xs:complexType name="outrankingCriterionType">
+	<xs:complexType name="outrankingCriterion">
 		<xs:complexContent>
-			<xs:extension base="xm:directedCriterionType">
+			<xs:extension base="xm:directedCriterion">
 				<xs:sequence>
 					<!-- The thresholds should be composed of non-negative a and b -->
-					<xs:element name="indifferenceThreshold" type="xm:affineLinearFunctionType"
+					<xs:element name="indifferenceThreshold" type="xm:affineLinearFunction"
 						minOccurs="0" maxOccurs="1" />
-					<xs:element name="preferenceThreshold" type="xm:affineLinearFunctionType"
+					<xs:element name="preferenceThreshold" type="xm:affineLinearFunction"
 						minOccurs="0" maxOccurs="1" />
-					<xs:element name="vetoThreshold" type="xm:affineLinearFunctionType"
+					<xs:element name="vetoThreshold" type="xm:affineLinearFunction"
 						minOccurs="0" maxOccurs="1" />
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="outrankingCriterionSetType">
+	<xs:complexType name="outrankingCriterionSet">
 		<xs:sequence>
-			<xs:element name="criterion" type="xm:outrankingCriterionType"
+			<xs:element name="criterion" type="xm:outrankingCriterion"
 				minOccurs="0" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
 	<!-- ValuedEntity -->
-	<xs:complexType name="valuedEntityType">
+	<xs:complexType name="valuedEntity">
 		<xs:sequence>
 			<xs:element name="entity" type="xm:keyedEntityReference" />
-			<xs:element name="measurement" type="xm:measurementType" />
+			<xs:element name="measurement" type="xm:measurement" />
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="valuedEntitySetType">
+	<xs:complexType name="valuedEntitySet">
 		<xs:sequence>
-			<xs:element name="entry" type="xm:valuedEntityType"
+			<xs:element name="entry" type="xm:valuedEntity"
 				minOccurs="0" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
 	<!-- ExactValuedEntity -->
-	<xs:complexType name="exactValuedEntityType">
+	<xs:complexType name="exactValuedEntity">
 		<xs:sequence>
 			<xs:element name="entity" type="xm:keyedEntityReference" />
-			<xs:element name="measurement" type="xm:exactMeasurementType" />
+			<xs:element name="measurement" type="xm:exactMeasurement" />
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="exactValuedEntitySetType">
+	<xs:complexType name="exactValuedEntitySet">
 		<xs:sequence>
-			<xs:element name="entry" type="xm:exactValuedEntityType"
+			<xs:element name="entry" type="xm:exactValuedEntity"
 				minOccurs="0" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
 
 	<!-- ValuedPair -->
-	<xs:complexType name="anyValuedPairType">
+	<xs:complexType name="anyValuedPair">
 		<xs:sequence>
 			<xs:element name="from" type="xm:keyedEntityReference" />
 			<xs:element name="to" type="xm:keyedEntityReference" />
-			<xs:element name="measurement" type="xm:measurementType" />
+			<xs:element name="measurement" type="xm:measurement" />
 		</xs:sequence>
 	</xs:complexType>
 
 	<!-- ValuedRelation -->
-	<xs:complexType name="anyValuedRelationType">
+	<xs:complexType name="anyValuedRelation">
 		<xs:sequence>
 			<xs:element name="valuedPair" minOccurs="0" maxOccurs="unbounded"
-				type="xm:anyValuedPairType" />
+				type="xm:anyValuedPair" />
 		</xs:sequence>
 	</xs:complexType>
 
 	<!-- BinaryValuedPair -->
-	<xs:complexType name="binaryValuedPairType">
+	<xs:complexType name="binaryValuedPair">
 		<xs:sequence>
 			<xs:element name="from" type="xm:keyedEntityReference" />
 			<xs:element name="to" type="xm:keyedEntityReference" />
-			<xs:element name="measurement" type="xm:binaryMeasurementType"
+			<xs:element name="measurement" type="xm:binaryMeasurement"
 				minOccurs="0" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>If not present, the measurement is interpreted as
@@ -460,28 +460,28 @@
 	</xs:complexType>
 
 	<!-- BinaryValuedRelation -->
-	<xs:complexType name="binaryRelationType">
+	<xs:complexType name="binaryRelation">
 		<xs:sequence>
 			<!-- If this binary relation is supposed to be known over some set of 
 				pairs, then it is allowed (though not mandatory) to skip some pairs, that 
 				is, to have no binaryValuedPair representing some pairs. Those pairs will 
 				be interpreted as if they had been included with a value equal to false. -->
 			<xs:element name="valuedPair" minOccurs="0" maxOccurs="unbounded"
-				type="xm:binaryValuedPairType" />
+				type="xm:binaryValuedPair" />
 		</xs:sequence>
 	</xs:complexType>
 
 	<!-- ExactValuedPair -->
-	<xs:complexType name="valuedPairType">
+	<xs:complexType name="valuedPair">
 		<xs:sequence>
 			<xs:element name="from" type="xm:keyedEntityReference" />
 			<xs:element name="to" type="xm:keyedEntityReference" />
-			<xs:element name="measurement" type="xm:exactMeasurementType" />
+			<xs:element name="measurement" type="xm:exactMeasurement" />
 		</xs:sequence>
 	</xs:complexType>
 
 	<!-- ExactValuedRelation -->
-	<xs:complexType name="valuedRelationType">
+	<xs:complexType name="valuedRelation">
 		<xs:annotation>
 			<xs:documentation>To encode a relation over sets A × B, with A, B in
 				{alternative set, attribute set, criterion set, category set}, A ≠
@@ -493,67 +493,67 @@
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="valuedPair" minOccurs="0" maxOccurs="unbounded"
-				type="xm:valuedPairType" />
+				type="xm:valuedPair" />
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="intervalValuedPairType">
+	<xs:complexType name="intervalValuedPair">
 		<xs:sequence>
 			<xs:element name="from" type="xm:keyedEntityReference" />
 			<xs:element name="to" type="xm:keyedEntityReference" />
-			<xs:element name="measurement" type="xm:intervalType" />
+			<xs:element name="measurement" type="xm:interval" />
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="intervalValuedRelationType">
+	<xs:complexType name="intervalValuedRelation">
 		<xs:sequence>
 			<xs:element name="valuedPair" minOccurs="0" maxOccurs="unbounded"
-				type="xm:intervalValuedPairType" />
+				type="xm:intervalValuedPair" />
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="gaussianValuedPairType">
+	<xs:complexType name="gaussianValuedPair">
 		<xs:sequence>
 			<xs:element name="from" type="xm:keyedEntityReference" />
 			<xs:element name="to" type="xm:keyedEntityReference" />
-			<xs:element name="measurement" type="xm:gaussianType" />
+			<xs:element name="measurement" type="xm:gaussian" />
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="gaussianValuedRelationType">
+	<xs:complexType name="gaussianValuedRelation">
 		<xs:sequence>
 			<xs:element name="valuedPair" minOccurs="0" maxOccurs="unbounded"
-				type="xm:gaussianValuedPairType" />
+				type="xm:gaussianValuedPair" />
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="nominalValuedPairType">
+	<xs:complexType name="nominalValuedPair">
 		<xs:sequence>
 			<xs:element name="from" type="xm:keyedEntityReference" />
 			<xs:element name="to" type="xm:keyedEntityReference" />
-			<xs:element name="measurement" type="xm:nominalMeasurementType" />
+			<xs:element name="measurement" type="xm:nominalMeasurement" />
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="nominalValuedRelationType">
+	<xs:complexType name="nominalValuedRelation">
 		<xs:sequence>
 			<xs:element name="valuedPair" minOccurs="0" maxOccurs="unbounded"
-				type="xm:nominalValuedPairType" />
+				type="xm:nominalValuedPair" />
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="impreciseNominalValuedPairType">
+	<xs:complexType name="impreciseNominalValuedPair">
 		<xs:sequence>
 			<xs:element name="from" type="xm:keyedEntityReference" />
 			<xs:element name="to" type="xm:keyedEntityReference" />
-			<xs:element name="measurement" type="xm:impreciseNominalMeasurementType" />
+			<xs:element name="measurement" type="xm:impreciseNominalMeasurement" />
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="impreciseNominalValuedRelationType">
+	<xs:complexType name="impreciseNominalValuedRelation">
 		<xs:sequence>
 			<xs:element name="valuedPair" minOccurs="0" maxOccurs="unbounded"
-				type="xm:impreciseNominalValuedPairType" />
+				type="xm:impreciseNominalValuedPair" />
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>

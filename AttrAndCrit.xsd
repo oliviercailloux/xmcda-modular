@@ -9,8 +9,8 @@
 	<xs:element name="AttrAndCrit">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="attribute" type="xm:attributeType" />
-				<xs:element name="criterion" type="xm:criterionType" />
+				<xs:element name="attribute" type="xm:attribute" />
+				<xs:element name="criterion" type="xm:criterion" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

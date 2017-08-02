@@ -21,8 +21,6 @@ $ xmllint --noout AttrAndCrit.xsd
 $ xmllint --noout --schema AttrAndCrit.xsd AttrAndCrit1.xml
 > AttrAndCrit1.xml validates
 ```
-----
-----
 
 The schemaLocation in AttrAndCrit.xsd normally points to the https://raw.githubusercontent.com/oliviercailloux/xmcda-modular/master/xmcda-modular.xsd[remote] xmcda-modular schema. xmllint apparently does not like that: if not changing the schemaLocation, it warns as follows.
 

@@ -34,3 +34,5 @@ Failed to locate a schema at location 'https://raw.githubusercontent.com/olivier
 
 (Instead of replacing the schema location in AttrAndCrit.xsd, you can also provide xmllint with an XML Catalog.)
 
+== Ref
+Cailloux, Olivier, Tommi Tervonen, Boris Verhaegen, and François Picalausa. 2014. “A Data Model for Algorithmic Multiple Criteria Decision Analysis”. Annals of Operations Research, 217(1), 7794. http://doi.org/10.1007/s10479-014-1562-1[doi], http://hal.archives-ouvertes.fr/docs/00/94/11/28/PDF/cailloux_data_2014-preprint.pdf[pdf]. 

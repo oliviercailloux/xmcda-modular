@@ -11,7 +11,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<!-- Note that this example is silly: as the attribute is embedded into 
-					the criterion there is no need to repeat it as a top-level element. -->
+					the criterion, there is no need to repeat it as a top-level element. -->
 				<xs:element name="attribute" type="xm:attribute" />
 				<xs:element name="criterion" type="xm:criterion" />
 			</xs:sequence>

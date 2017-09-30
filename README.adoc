@@ -1,0 +1,38 @@
+= xmcda-modular draft schema
+
+The http://www.decision-deck.org/ws/[XMCDA web services] are a collection of web services that all share an exchange format: XMCDA. XMCDA is described by an XSD schema (currently transiting from v2 to v3).
+
+The drawback of all those web services sharing a single schema is that the web services inputs and outputs are not described precisely.
+
+This is an attempt at modularizing the schema used for XMCDA web services. The goal is to permit finer description of each web service, each one using its own schema, that would reuse the types from the global xmcda-modular schema. 
+
+Which is here provided.
+
+== Validating
+```sh
+$ git clone git@github.com:xmcda-modular/schema.git
+$ cd schema
+$ xmllint --noout xmcda-modular.xsd 
+#⇒ says nothing (that’s good)
+$ sed -i "s#schemaLocation=\"https://raw.githubusercontent.com/oliviercailloux/xmcda-modular/master/xmcda-modular.xsd\"#schemaLocation=\"xmcda-modular.xsd\"#" AttrAndCrit.xsd
+#⇒ changes the schemaLocation in AttrAndCrit.xsd
+$ xmllint --noout AttrAndCrit.xsd
+#⇒ says nothing (that’s good)
+$ xmllint --noout --schema AttrAndCrit.xsd AttrAndCrit1.xml
+> AttrAndCrit1.xml validates
+```
+Try to remove the `criterion` element in AttrAndCrit1.xml. Observe that xmllint now fails.
+
+=== About schemaLocation
+The schemaLocation in AttrAndCrit.xsd normally points to the https://raw.githubusercontent.com/oliviercailloux/xmcda-modular/master/xmcda-modular.xsd[remote] xmcda-modular schema. xmllint apparently does not like that: if not changing the schemaLocation, it warns as follows.
+
+----
+Failed to locate a schema at location 'https://raw.githubusercontent.com/oliviercailloux/xmcda-modular/master/xmcda-modular.xsd'. Skipping the import.
+----
+
+(Then of course validation fails.) I believe this is a problem with xmllint, as `curl "https://raw.githubusercontent.com/oliviercailloux/xmcda-modular/master/xmcda-modular.xsd"` works.
+
+(Instead of replacing the schema location in AttrAndCrit.xsd, you can also provide xmllint with an XML Catalog.)
+
+== Ref
+Cailloux, Olivier, Tommi Tervonen, Boris Verhaegen, and François Picalausa. 2014. “A Data Model for Algorithmic Multiple Criteria Decision Analysis”. Annals of Operations Research, 217(1), 7794. http://doi.org/10.1007/s10479-014-1562-1[doi], http://hal.archives-ouvertes.fr/docs/00/94/11/28/PDF/cailloux_data_2014-preprint.pdf[pdf]. 

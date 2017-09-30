@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	targetNamespace="http://xmcda-modular.github.io/2016/examples/AttrAndCrit" xmlns:xm="http://xmcda-modular.github.io/2016/xsd"
-	xmlns:xac="http://xmcda-modular.github.io/2016/examples/AttrAndCrit" elementFormDefault="unqualified">
+	targetNamespace="http://xmcda-modular.github.io/2017/examples/AttrAndCrit"
+	xmlns:xm="http://xmcda-modular.github.io/2017/xsd" xmlns:xac="http://xmcda-modular.github.io/2017/examples/AttrAndCrit"
+	elementFormDefault="unqualified">
 
-	<xs:import namespace="http://xmcda-modular.github.io/2016/xsd"
+	<xs:import namespace="http://xmcda-modular.github.io/2017/xsd"
 		schemaLocation="https://raw.githubusercontent.com/oliviercailloux/xmcda-modular/master/xmcda-modular.xsd"></xs:import>
 
 	<xs:element name="AttrAndCrit">
 		<xs:complexType>
 			<xs:sequence>
+				<!-- Note that this example is silly: as the attribute is embedded into 
+					the criterion there is no need to repeat it as a top-level element. -->
 				<xs:element name="attribute" type="xm:attribute" />
 				<xs:element name="criterion" type="xm:criterion" />
 			</xs:sequence>

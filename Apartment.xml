@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xap:Apartment
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmcda-modular.github.io/2019/examples/Apartment Apartment.xsd"
+	xmlns:xap="http://xmcda-modular.github.io/2019/examples/Apartment"
+	xmlns:xm="http://xmcda-modular.github.io/2017/xsd">
+	<id>a1</id>
+	<performances>
+		<entry>
+			<entity xsi:type="xm:attribute">
+				<id>surface</id>
+			</entity>
+			<measurement xsi:type="xm:exactMeasurement">
+				<value>50</value>
+			</measurement>
+		</entry>
+		<entry>
+			<entity xsi:type="xm:attribute">
+				<id>price</id>
+			</entity>
+			<measurement xsi:type="xm:exactMeasurement">
+				<value>60</value>
+			</measurement>
+		</entry>
+	</performances>
+</xap:Apartment>
